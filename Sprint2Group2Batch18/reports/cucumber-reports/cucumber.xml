@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="0.222" tests="7" skipped="0" failures="0" errors="0">
+<testcase classname="Flight Enquiry" name="To Verify successful form submission with valid input" time="0.025">
+<system-out><![CDATA[
+Given User is on the Flight Enquiry form page with internet access..........passed
+When User navigates to Enquiry Link.........................................passed
+And User enters Name "Jhon Wick"............................................passed
+And User enters Email "jhon123@gmail.com"...................................passed
+And User enters Phone "9874561230"..........................................passed
+And User enters Subject "Flight Timing".....................................passed
+And User enters Message "Please confirm the departure time for flight AI202".passed
+And User clicks send........................................................passed
+Then Form Submit successfully...............................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Flight Enquiry" name="To Verify Blank Full Name" time="0.003">
+<system-out><![CDATA[
+Given User is on the Flight Enquiry form page with internet access..........passed
+When User navigates to Enquiry Link.........................................passed
+And User leaves Full Name blank.............................................passed
+And User fills all other fields with valid data.............................passed
+And User clicks Send........................................................passed
+Then Error message shown under Full Name field: "Name is required"..........passed
+And Form not submitted......................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Flight Enquiry" name="To Verify Invalid Email Format" time="0.003">
+<system-out><![CDATA[
+Given User is on the Flight Enquiry form page with internet access..........passed
+When User navigates to Enquiry Link.........................................passed
+And User enters invalid Email "jhon123.gmail.com"...........................passed
+And User fills all other fields correctly...................................passed
+And User clicks Send........................................................passed
+Then Error message shown under Message: "Please enter a valid email address.".passed
+And Form not submitted......................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Flight Enquiry" name="To Verify Blank Message Field" time="0.002">
+<system-out><![CDATA[
+Given User is on the Flight Enquiry form page with internet access..........passed
+When User navigates to Enquiry Link.........................................passed
+And User fills all fields except Message....................................passed
+And User clicks Send........................................................passed
+Then Error message shown under Message: "Message cannot be empty"...........passed
+And Form not submitted......................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Flight Enquiry" name="To Verify Phone Number with Alphabets" time="0.003">
+<system-out><![CDATA[
+Given User is on the Flight Enquiry form page with internet access..........passed
+When User navigates to Enquiry Link.........................................passed
+And User enters Phone Number "98abc123xx"...................................passed
+And User fills other fields properly........................................passed
+And User clicks Send........................................................passed
+Then Error message near phone field: "Invalid phone number".................passed
+And Form not submitted......................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Flight Enquiry" name="To Verify Send Button Functionality" time="0.002">
+<system-out><![CDATA[
+Given User is on the Flight Enquiry form page with internet access..........passed
+When User navigates to Enquiry Link.........................................passed
+And User fills all fields with valid data...................................passed
+And User finds the submit button............................................passed
+And User clicks the button..................................................passed
+Then Success Message: "Thank you! We will get back to you as soon as possible.".passed
+]]></system-out>
+</testcase>
+<testcase classname="Flight Enquiry" name="To Verify Blank Subject Field" time="0.005">
+<system-out><![CDATA[
+Given User is on the Flight Enquiry form page with internet access..........passed
+When User navigates to Enquiry Link.........................................passed
+And User leaves Subject field blank.........................................passed
+And User fills the other fields with valid data.............................passed
+And User clicks the Send button.............................................passed
+Then Error message shown under Message: "Subject cannot be empty"...........passed
+And Form not submitted......................................................passed
+]]></system-out>
+</testcase>
+</testsuite>
