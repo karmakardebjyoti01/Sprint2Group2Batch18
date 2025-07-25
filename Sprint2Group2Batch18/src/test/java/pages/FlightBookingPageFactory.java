@@ -1,14 +1,14 @@
 package pages;
 
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class FlightBookingPageFactory {
-	Webdriver driver;
+public class FlightBookingPageFactory extends BaseClass {
+	WebDriver driver;
 	
-	public FlightBookingPageFactory{
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
+	public FlightBookingPageFactory(WebDriver driver){
+		super(driver);
 	}
 	
 	@FindBy(id="fromCity")
