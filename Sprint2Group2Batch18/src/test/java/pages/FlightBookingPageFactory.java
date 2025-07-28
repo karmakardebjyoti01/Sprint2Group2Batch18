@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class FlightBookingPageFactory extends BaseClass {
-	WebDriver driver;
+//	WebDriver driver;
 	
 	public FlightBookingPageFactory(WebDriver driver){
 		super(driver);
