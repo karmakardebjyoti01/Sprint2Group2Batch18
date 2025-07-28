@@ -2,6 +2,7 @@ package setup;
 
 import static org.testng.Assert.assertTrue;
 
+import java.time.Duration;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
@@ -13,7 +14,7 @@ import org.openqa.selenium.safari.SafariDriver;
 public class DriverSetUp {
 	static WebDriver driver;
 	static Properties p;
-	public static WebDriver getDriver() throws Exception {
+	public static WebDriver initializeDriver() throws Exception {
 		
 		String browser=PropertiesProvider.getKey("browser");
 		System.out.println("Browser"+ browser);
@@ -37,10 +38,14 @@ public class DriverSetUp {
 		}else {
 			assertTrue(false,"Browser is not selected");
 		}
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().window().maximize();
 //		return driver;
 		return driver;
 		
+	}
+	public static WebDriver getDriver() {
+		return driver;
 	}
 	
 
