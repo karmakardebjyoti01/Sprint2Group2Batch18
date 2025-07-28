@@ -25,9 +25,7 @@ public class FlightEnquiryStepDefinition {
 //		driver=DriverSetUp.getDriver();
 		feqEnquiryPageFactory=new FlightEnquiryPageFactory(driver);
 		Thread.sleep(2000);
-		
-		
-		
+			
 		System.out.println("User is on the Flight Enquiry form page with internet access");
 		
 	    
