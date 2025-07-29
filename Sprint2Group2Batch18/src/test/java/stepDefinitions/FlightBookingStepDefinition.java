@@ -1,92 +1,90 @@
 package stepDefinitions;
 
-import org.openqa.selenium.*;
-import org.junit.Assert;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-import io.cucumber.java.en.*;
-import pages.FlightBookingPageFactory;
+import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
+
+import hooks.Hook;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import pages.BaseClass;
+import pages.FlightEnquiryPageFactory;
 import setup.DriverSetUp;
 
-public class FlightBookingStepDefinition {
-    WebDriver driver = DriverSetUp.getDriver();
+public class FlightEnquiryStepDefinition {
+	WebDriver driver = Hook.driver;
     FlightBookingPageFactory flightPage;
 
-    @Given("User launches the flight booking application")
-    public void user_launches_flight_booking_app() {
-//        driver.get("https://webapps.tekstac.com/FlightBooking/login.html");
-    	flightPage=  new FlightBookingPageFactory(driver);
-        flightPage.login();
+    @Given("User is on the Flight Booking page")
+	public void user_is_on_the_flight_booking_page() throws InterruptedException {
+	    // Write code here that turns the phrase above into concrete actions
+//		driver=DriverSetUp.getDriver();
+    	flightPage =new FlightBookingPageFactory(driver);
+		Thread.sleep(2000);
+			
+		System.out.println("User is on the Flight Enquiry form page with internet access");
+		
+	    
+	}
+
+    @When("User enters Travel From as {string}")
+    public void user_enters_travel_from_as(String from) {
+        flightPage.enterFromCity(from);
     }
 
-    @When("User enters {string} as the departure city")
-    public void user_enters_departure_city(String fromCity) {
-        flightPage.enterFromCity(fromCity);
-        System.out.println("City:"+fromCity);
+    @And("User enters Travel To as {string}")
+    public void user_enters_travel_to_as(String to) {
+        flightPage.enterToCity(to);
     }
 
-    @When("User enters {string} as the destination city")
-    public void user_enters_destination_city(String toCity) {
-        flightPage.enterToCity(toCity);
-    }
-
-    @When("User enters {string} as the departure date")
-    public void user_enters_departure_date(String date) {
+    @And("User enters Departure Date as {string}")
+    public void user_enters_departure_date_as(String date) {
         flightPage.enterDepartureDate(date);
     }
 
-    @When("User enters {string} as the return date")
-    public void user_enters_return_date(String returnDate) {
-        flightPage.enterReturnDate(returnDate);
+    @And("User selects Class as {string}")
+    public void user_selects_class_as(String flightClass) {
+        flightPage.selectTravelClass(flightClass);
     }
 
-    @When("User selects {string} number of passengers")
-    public void user_selects_number_of_passengers(String passengers) {
-//        flightPage.selectPassengers(passengers);
+    @And("User enters Name as {string}")
+    public void user_enters_name_as(String name) {
+        flightPage.enterName(name);
     }
 
-    @When("User checks the one way checkbox")
-    public void user_checks_one_way_checkbox() {
-//        flightPage.checkOneWay();
+    @And("User enters Email as {string}")
+    public void user_enters_email_as(String email) {
+        flightPage.enterEmail(email);
     }
 
-    @When("User clicks the Search Flights button")
-    public void user_clicks_search_button() {
+    @And("User enters Phone as {string}")
+    public void user_enters_phone_as(String phone) {
+        flightPage.enterPhone(phone);
+    }
+
+    @And("User enters No Of Passenger as {string}")
+    public void user_enters_no_of_passenger_as(String passengers) {
+        flightPage.selectPassengerCount(passengers);
+    }
+
+    @And("User clicks on Book Now button")
+    public void user_clicks_on_book_now_button() {
         flightPage.clickSearchButton();
     }
 
-    @Then("User should see the list of available flights")
-    public void user_should_see_flight_list() {
-        Assert.assertTrue("Flight list not displayed", flightPage.isFlightListDisplayed());
+    @Then("User should see the confirmation message {string}")
+    public void user_should_see_the_confirmation_message(String expectedMessage) {
+        String actualMessage = flightPage.getBookingConfirmationMessage();
+        Assert.assertEquals(actualMessage, expectedMessage);
     }
 
-    @Then("An error message {string} should be displayed")
-    public void error_message_should_be_displayed(String expectedError) {
-//        String actualError = flightPage.getErrorMessage();
-//        Assert.assertEquals(expectedError, actualError);
-    }
-
-    @Then("The Return Date field should be disabled")
-    public void return_date_field_should_be_disabled() {
-//        Assert.assertTrue("Return Date field is not disabled", flightPage.isReturnDateDisabled());
-    }
-
-    @When("User leaves the departure city blank")
-    public void user_leaves_departure_city_blank() {
-        flightPage.enterFromCity("");
-    }
-
-    @When("User leaves the destination city blank")
-    public void user_leaves_destination_city_blank() {
-        flightPage.enterToCity("");
-    }
-
-    @When("User leaves the departure date blank")
-    public void user_leaves_departure_date_blank() {
-        flightPage.enterDepartureDate("");
-    }
-
-    @When("User selects no. of passengers as default")
-    public void user_selects_default_passengers() {
-//        flightPage.selectPassengers("Select"); // assuming "Select" is the default
+    @Then("User should see an error message for name as {string}")
+    public void user_should_see_an_error_message_for_name_as(String expectedError) {
+        String actualError = flightPage.getNameErrorMessage();
+        Assert.assertEquals(actualError, expectedError);
     }
 }

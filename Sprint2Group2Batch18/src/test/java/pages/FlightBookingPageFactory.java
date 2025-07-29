@@ -44,25 +44,28 @@ public class FlightBookingPageFactory extends BaseClass {
     @FindBy(id = "departure")
     WebElement departureDateInput;
  
-   // @FindBy(id = "returnDate")
-   // WebElement returnDateInput;
-    
     @FindBy(id = "selectClassLabel")
     WebElement selectClassLabel;
     
     @FindBy(id = "name")
-    WebElement passengerName;
+    WebElement name;
  
     @FindBy(id = "email")
     WebElement email;
+    
+    @FindBy(id = "phone")
+    WebElement phone;
  
     @FindBy(id = "ticket-class-count")
     WebElement ticketClassCount;
     
-    @FindBy(id = "searchFlightsBtn")
+    @FindBy(id = "book-now")
     WebElement searchButton;
+    
+    @FindBy(id = "bookingconfirm")
+    WebElement confirmMessage;
  
-    @FindBy(id = "errorMessage")
+    @FindBy(id = "errfn")
     WebElement errorMessage;
  
     
@@ -80,33 +83,43 @@ public class FlightBookingPageFactory extends BaseClass {
         departureDateInput.clear();
         departureDateInput.sendKeys(date);
     }
- 
-    public void enterReturnDate(String date) {
-//        returnDateInput.clear();
-//        returnDateInput.sendKeys(date);
+    
+    public void selectTravelClass(String className) {
+		Select selectClassLabel = new Select(selectClassLabel);
+		selectClassLabel.selectByVisibleText(className);
+	}
+    
+    public void enterName(String passengerName) {
+        name.clear();
+        name.sendKeys(passengerName);
+    }
+    
+    public void enterEmail(String passengerEmail) {
+        email.clear();
+        email.sendKeys(passengerEmail);
+    }
+    
+    public void enterPhone(String passengerPhone) {
+        phone.clear();
+        phone.sendKeys(passengerPhone);
     }
  
     public void selectPassengerCount(String count) {
 //        passengerCountDropdown.sendKeys(count);
-    }
- 
-    public void uncheckReturnOption() {
-//        if (oneWayCheckbox.isSelected()) {
-//            oneWayCheckbox.click();
-//        }
+    	ticketClassCount.clear();
+    	ticketClassCount.sendKeys(count);
     }
  
     public void clickSearchButton() {
         searchButton.click();
     }
  
-    public boolean isErrorMessageDisplayed() {
-        return errorMessage.isDisplayed();
+    public String getBookingConfirmationMessage() {
+        return confirmMessage.getText().trim();
     }
- 
-    public boolean isFlightListDisplayed() {
-        // This method should ideally check for an element that confirms flights are listed
-        return true; // placeholder, change according to actual flight list web element
+
+    public String getNameErrorMessage() {
+        return errorMessage.getText().trim();
     }
     
     
