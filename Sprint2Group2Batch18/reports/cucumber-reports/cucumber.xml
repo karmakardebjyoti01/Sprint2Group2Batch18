@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="112.683" tests="7" skipped="0" failures="4" errors="0">
+<testcase classname="Flight Search Functionality" name="TC001 - Search by valid Flight Number" time="11.959">
+<system-out><![CDATA[
+Given User is on Flight Search page.........................................passed
+When User searches by flight number "AC789".................................passed
+Then Flight with number "AC789" should be displayed.........................passed
+]]></system-out>
+</testcase>
+<testcase classname="Flight Search Functionality" name="TC002 - Search by Partial Flight Name" time="11.155">
+<system-out><![CDATA[
+Given User is on Flight Search page.........................................passed
+When User searches by flight name "Jet".....................................passed
+Then Flight with name containing "Jet" should be displayed..................passed
+]]></system-out>
+</testcase>
+<testcase classname="Flight Search Functionality" name="TC004 - Search by valid Flight Type" time="11.572">
+<system-out><![CDATA[
+Given User is on Flight Search page.........................................passed
+When User searches by flight type "Direct Flight"...........................passed
+Then Flights with type "Direct Flight" should be displayed..................passed
+]]></system-out>
+</testcase>
+<testcase classname="Flight Search Functionality" name="TC003 - Search by Invalid Flight Type" time="21.515">
+<failure type="java.lang.AssertionError" message="Expected: No results shown and message displayed. Actual: Table has rows or no error message visible.">
+<![CDATA[java.lang.AssertionError: Expected: No results shown and message displayed. Actual: Table has rows or no error message visible.
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at stepDefinitions.FlightSearchStepDefinition.no_flight_results_should_be_displayed(FlightSearchStepDefinition.java:67)
+	at ✽.No flight results should be displayed(file:///C:/Users/tujom/OneDrive/Desktop/ggg/Sprint2Group2Batch18/Sprint2Group2Batch18/./src/test/java/features/FlightSearch.feature:22)
+]]>
+</failure>
+<system-out><![CDATA[
+Given User is on Flight Search page.........................................passed
+When User searches by flight type "Cargo Flight"............................passed
+Then No flight results should be displayed..................................failed
+]]></system-out>
+</testcase>
+<testcase classname="Flight Search Functionality" name="TC005 - Search by Invalid Flight Name" time="21.61">
+<failure type="java.lang.AssertionError" message="Expected: No results shown and message displayed. Actual: Table has rows or no error message visible.">
+<![CDATA[java.lang.AssertionError: Expected: No results shown and message displayed. Actual: Table has rows or no error message visible.
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at stepDefinitions.FlightSearchStepDefinition.no_flight_results_should_be_displayed(FlightSearchStepDefinition.java:67)
+	at ✽.No flight results should be displayed(file:///C:/Users/tujom/OneDrive/Desktop/ggg/Sprint2Group2Batch18/Sprint2Group2Batch18/./src/test/java/features/FlightSearch.feature:27)
+]]>
+</failure>
+<system-out><![CDATA[
+Given User is on Flight Search page.........................................passed
+When User searches by flight name "SkyKing".................................passed
+Then No flight results should be displayed..................................failed
+]]></system-out>
+</testcase>
+<testcase classname="Flight Search Functionality" name="TC009 - Search by Invalid Flight Number" time="22.921">
+<failure type="java.lang.AssertionError" message="Expected: No results shown and message displayed. Actual: Table has rows or no error message visible.">
+<![CDATA[java.lang.AssertionError: Expected: No results shown and message displayed. Actual: Table has rows or no error message visible.
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at stepDefinitions.FlightSearchStepDefinition.no_flight_results_should_be_displayed(FlightSearchStepDefinition.java:67)
+	at ✽.No flight results should be displayed(file:///C:/Users/tujom/OneDrive/Desktop/ggg/Sprint2Group2Batch18/Sprint2Group2Batch18/./src/test/java/features/FlightSearch.feature:32)
+]]>
+</failure>
+<system-out><![CDATA[
+Given User is on Flight Search page.........................................passed
+When User searches by flight number "ZZ999".................................passed
+Then No flight results should be displayed..................................failed
+]]></system-out>
+</testcase>
+<testcase classname="Flight Search Functionality" name="TC010 - Search with Leading/Trailing Spaces" time="11.785">
+<failure type="java.lang.AssertionError" message="Flight number not found: AC789">
+<![CDATA[java.lang.AssertionError: Flight number not found: AC789
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at stepDefinitions.FlightSearchStepDefinition.flight_with_number_should_be_displayed(FlightSearchStepDefinition.java:30)
+	at ✽.Flight with number "AC789" should be displayed(file:///C:/Users/tujom/OneDrive/Desktop/ggg/Sprint2Group2Batch18/Sprint2Group2Batch18/./src/test/java/features/FlightSearch.feature:37)
+]]>
+</failure>
+<system-out><![CDATA[
+Given User is on Flight Search page.........................................passed
+When User searches by flight number " AC789 "...............................passed
+Then Flight with number "AC789" should be displayed.........................failed
+]]></system-out>
+</testcase>
+</testsuite>
