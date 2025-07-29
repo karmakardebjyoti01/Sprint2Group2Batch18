@@ -65,3 +65,6 @@ Feature: Flight Booking Functionality
     When User fills all required passenger and payment details correctly
     And User clicks on the 'Confirm Booking' button
     Then Booking confirmation should be displayed with a booking reference
+
+
+ 
