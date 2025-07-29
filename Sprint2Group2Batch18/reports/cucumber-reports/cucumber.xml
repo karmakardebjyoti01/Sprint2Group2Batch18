@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="195.112" tests="16" skipped="0" failures="12" errors="0">
+<testcase classname="Flight Enquiry" name="Enquiry Form Submission and Validation - Example #1.1" time="15.607">
+<system-out><![CDATA[
+Given User is on the Flight Enquiry form page with internet access..........passed
+When User navigates to Enquiry Link.........................................passed
+And User enters Name "John Doe".............................................passed
+And User enters Email "jhon123@gmail.com"...................................passed
+And User enters Phone "9874561230"..........................................passed
+And User enters Subject "Flight Timing".....................................passed
+And User enters Message "Please confirm the departure time for flight AI202".passed
+And User clicks Send........................................................passed
+Then System should display "THANK YOU! WE WILL GET BACK TO YOU AS SOON AS POSSIBLE.".passed
+And Form submission status should be "Submitted"............................passed
+]]></system-out>
+</testcase>
+<testcase classname="Flight Enquiry" name="Enquiry Form Submission and Validation - Example #1.2" time="15.23">
+<system-out><![CDATA[
+Given User is on the Flight Enquiry form page with internet access..........passed
+When User navigates to Enquiry Link.........................................passed
+And User enters Name "".....................................................passed
+And User enters Email "jhon123@gmail.com"...................................passed
+And User enters Phone "9874561230"..........................................passed
+And User enters Subject "Flight Timing".....................................passed
+And User enters Message "Please confirm the departure time for flight AI202".passed
+And User clicks Send........................................................passed
+Then System should display "Your name should be at least 3 characters long.".passed
+And Form submission status should be "Not Submitted"........................passed
+]]></system-out>
+</testcase>
+<testcase classname="Flight Enquiry" name="Enquiry Form Submission and Validation - Example #1.3" time="15.008">
+<system-out><![CDATA[
+Given User is on the Flight Enquiry form page with internet access..........passed
+When User navigates to Enquiry Link.........................................passed
+And User enters Name "John Doe".............................................passed
+And User enters Email "jhon123.gmail.com"...................................passed
+And User enters Phone "9874561230"..........................................passed
+And User enters Subject "Flight Timing".....................................passed
+And User enters Message "Please confirm the departure time for flight AI202".passed
+And User clicks Send........................................................passed
+Then System should display "Please enter a valid email address."............passed
+And Form submission status should be "Not Submitted"........................passed
+]]></system-out>
+</testcase>
+<testcase classname="Flight Enquiry" name="Enquiry Form Submission and Validation - Example #1.4" time="14.553">
+<system-out><![CDATA[
+Given User is on the Flight Enquiry form page with internet access..........passed
+When User navigates to Enquiry Link.........................................passed
+And User enters Name "John Doe".............................................passed
+And User enters Email "jhon123@gmail.com"...................................passed
+And User enters Phone "9874561230"..........................................passed
+And User enters Subject "Flight Timing".....................................passed
+And User enters Message ""..................................................passed
+And User clicks Send........................................................passed
+Then System should display "Please write a longer message.".................passed
+And Form submission status should be "Not Submitted"........................passed
+]]></system-out>
+</testcase>
+<testcase classname="Flight Enquiry" name="Enquiry Form Submission and Validation - Example #1.5" time="14.174">
+<failure type="java.lang.AssertionError">
+<![CDATA[java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at stepDefinitions.FlightEnquiryStepDefinition.system_should_display(FlightEnquiryStepDefinition.java:89)
+	at ✽.System should display "Invalid phone number."(file:///C:/Users/rajdeep%20ghosh/OneDrive/Desktop/git/Sprint2Group2/Sprint2Group2Batch18/./src/test/java/features/FlightEnquiry.feature:13)
+]]>
+</failure>
+<system-out><![CDATA[
+Given User is on the Flight Enquiry form page with internet access..........passed
+When User navigates to Enquiry Link.........................................passed
+And User enters Name "John Doe".............................................passed
+And User enters Email "jhon123@gmail.com"...................................passed
+And User enters Phone "98abc123xx"..........................................passed
+And User enters Subject "Flight Timing".....................................passed
+And User enters Message "Please confirm the departure time for flight AI202".passed
+And User clicks Send........................................................passed
+Then System should display "Invalid phone number."..........................failed
+And Form submission status should be "Not Submitted"........................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Flight Enquiry" name="Enquiry Form Submission and Validation - Example #1.6" time="14.363">
+<failure type="java.lang.AssertionError">
+<![CDATA[java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at stepDefinitions.FlightEnquiryStepDefinition.system_should_display(FlightEnquiryStepDefinition.java:89)
+	at ✽.System should display "Subject cannot be empty."(file:///C:/Users/rajdeep%20ghosh/OneDrive/Desktop/git/Sprint2Group2/Sprint2Group2Batch18/./src/test/java/features/FlightEnquiry.feature:13)
+]]>
+</failure>
+<system-out><![CDATA[
+Given User is on the Flight Enquiry form page with internet access..........passed
+When User navigates to Enquiry Link.........................................passed
+And User enters Name "John Doe".............................................passed
+And User enters Email "jhon123@gmail.com"...................................passed
+And User enters Phone "9874561230"..........................................passed
+And User enters Subject ""..................................................passed
+And User enters Message "Please confirm the departure time for flight AI202".passed
+And User clicks Send........................................................passed
+Then System should display "Subject cannot be empty.".......................failed
+And Form submission status should be "Not Submitted"........................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Flight Booking Functionality" name="Verify that user can search for a flight with valid inputs" time="11.403">
+<failure/>
+<system-out><![CDATA[
+Given User launches the flight booking application..........................passed
+When User enters "New York" as the departure city...........................passed
+And User enters "London" as the destination city............................passed
+And User selects departure date as "2025-08-20".............................undefined
+And User selects return date as "2025-08-25"................................skipped
+And User clicks on the search button........................................skipped
+Then Flights between "New York" and "London" should be displayed............skipped
+]]></system-out>
+</testcase>
+<testcase classname="Flight Booking Functionality" name="Verify that user cannot search without entering departure and destination cities" time="10.905">
+<failure/>
+<system-out><![CDATA[
+Given User launches the flight booking application..........................passed
+When User leaves departure and destination cities blank.....................undefined
+And User clicks on the search button........................................skipped
+Then An error message should be displayed...................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Flight Booking Functionality" name="Verify date validation when return date is before departure date" time="11.326">
+<failure/>
+<system-out><![CDATA[
+Given User launches the flight booking application..........................passed
+When User enters "Delhi" as the departure city..............................passed
+And User enters "Paris" as the destination city.............................passed
+And User selects departure date as "2025-09-10".............................undefined
+And User selects return date as "2025-09-05"................................skipped
+And User clicks on the search button........................................skipped
+Then A date validation error should be shown................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Flight Booking Functionality" name="Verify that user can select number of passengers and search" time="11.327">
+<failure/>
+<system-out><![CDATA[
+Given User launches the flight booking application..........................passed
+When User enters "Mumbai" as the departure city.............................passed
+And User enters "Singapore" as the destination city.........................passed
+And User selects departure date as "2025-08-28".............................undefined
+And User selects return date as "2025-09-05"................................skipped
+And User selects "2" adults and "1" child...................................skipped
+And User clicks on the search button........................................skipped
+Then Flight results should reflect passenger selection......................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Flight Booking Functionality" name="Verify user can filter flight results by airline" time="10.114">
+<failure/>
+<system-out><![CDATA[
+Given Flight results are displayed for route "Chennai" to "Dubai"...........undefined
+When User applies filter for "Emirates".....................................skipped
+Then Only flights from "Emirates" should be displayed.......................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Flight Booking Functionality" name="Verify user can sort flight results by price (low to high)" time="10.279">
+<failure/>
+<system-out><![CDATA[
+Given Flight results are displayed for route "Bangalore" to "Tokyo".........undefined
+When User sorts the flights by price from low to high.......................skipped
+Then Flights should be sorted in ascending order of price...................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Flight Booking Functionality" name="Verify user can view flight details by clicking on 'View Details'" time="10.084">
+<failure/>
+<system-out><![CDATA[
+Given Flight results are displayed for any search...........................undefined
+When User clicks on the 'View Details' button of a flight...................skipped
+Then Detailed information about the flight should be displayed..............skipped
+]]></system-out>
+</testcase>
+<testcase classname="Flight Booking Functionality" name="Verify user can book a flight from the list" time="10.321">
+<failure/>
+<system-out><![CDATA[
+Given Flight results are displayed for route "Kolkata" to "Bangkok".........undefined
+When User clicks on the 'Book Now' button for a flight......................skipped
+Then Booking form should be displayed.......................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Flight Booking Functionality" name="Verify user cannot proceed to book without filling passenger details" time="10.098">
+<failure/>
+<system-out><![CDATA[
+Given Booking form is displayed.............................................undefined
+When User leaves passenger details empty....................................skipped
+And User clicks on the 'Continue' button....................................skipped
+Then An error message asking to fill required details should appear.........skipped
+]]></system-out>
+</testcase>
+<testcase classname="Flight Booking Functionality" name="Verify successful booking confirmation with valid data" time="10.075">
+<failure/>
+<system-out><![CDATA[
+Given Booking form is displayed.............................................undefined
+When User fills all required passenger and payment details correctly........skipped
+And User clicks on the 'Confirm Booking' button.............................skipped
+Then Booking confirmation should be displayed with a booking reference......skipped
+]]></system-out>
+</testcase>
+</testsuite>

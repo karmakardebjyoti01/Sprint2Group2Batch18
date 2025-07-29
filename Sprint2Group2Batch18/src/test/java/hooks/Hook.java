@@ -1,6 +1,7 @@
 package hooks;
 
 import java.util.Properties;
+import java.util.UUID;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -26,15 +27,16 @@ public class Hook {
 	}
 	@AfterStep
 	public void snapShot(Scenario scenario) {
-		if(scenario.isFailed()) {
-			TakesScreenshot ts=(TakesScreenshot) driver;
-        	byte[] screenshot=ts.getScreenshotAs(OutputType.BYTES);
-        	scenario.attach(screenshot, "./image/img.png",scenario.getName());
-		}
+		if (driver != null && scenario.isFailed() == false) { // or remove the check to take for all steps
+            TakesScreenshot ts = (TakesScreenshot) driver;
+            byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/png", "Step Screenshot - " + UUID.randomUUID());
+        }
 	}
 	
 	@After
 	public void tearDown() {
+		if(driver!=null)
 		driver.close();
 	}
 	

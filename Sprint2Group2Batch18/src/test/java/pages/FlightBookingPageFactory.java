@@ -1,7 +1,7 @@
 package pages;
  
 import java.time.Duration;
-
+ 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -35,30 +35,37 @@ public class FlightBookingPageFactory extends BaseClass {
     
     
  
-    @FindBy(id = "fromCity")
+    @FindBy(id = "travelFrom")
     WebElement fromCityInput;
  
-    @FindBy(id = "toCity")
+    @FindBy(id = "travelTo")
     WebElement toCityInput;
  
-    @FindBy(id = "departureDate")
+    @FindBy(id = "departure")
     WebElement departureDateInput;
  
-    @FindBy(id = "returnDate")
-    WebElement returnDateInput;
+   // @FindBy(id = "returnDate")
+   // WebElement returnDateInput;
+    
+    @FindBy(id = "selectClassLabel")
+    WebElement selectClassLabel;
+    
+    @FindBy(id = "name")
+    WebElement passengerName;
  
-    @FindBy(id = "passengerCount")
-    WebElement passengerCountDropdown;
+    @FindBy(id = "email")
+    WebElement email;
  
-    @FindBy(id = "oneWayCheckbox")
-    WebElement oneWayCheckbox;
- 
+    @FindBy(id = "ticket-class-count")
+    WebElement ticketClassCount;
+    
     @FindBy(id = "searchFlightsBtn")
     WebElement searchButton;
  
     @FindBy(id = "errorMessage")
     WebElement errorMessage;
  
+    
     public void enterFromCity(String fromCity) {
         fromCityInput.clear();
         fromCityInput.sendKeys(fromCity);
@@ -75,18 +82,18 @@ public class FlightBookingPageFactory extends BaseClass {
     }
  
     public void enterReturnDate(String date) {
-        returnDateInput.clear();
-        returnDateInput.sendKeys(date);
+//        returnDateInput.clear();
+//        returnDateInput.sendKeys(date);
     }
  
     public void selectPassengerCount(String count) {
-        passengerCountDropdown.sendKeys(count);
+//        passengerCountDropdown.sendKeys(count);
     }
  
     public void uncheckReturnOption() {
-        if (oneWayCheckbox.isSelected()) {
-            oneWayCheckbox.click();
-        }
+//        if (oneWayCheckbox.isSelected()) {
+//            oneWayCheckbox.click();
+//        }
     }
  
     public void clickSearchButton() {
