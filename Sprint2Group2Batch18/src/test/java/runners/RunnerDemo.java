@@ -7,7 +7,7 @@ import io.cucumber.junit.*;
 @CucumberOptions( 
 		features = {".\\src\\test\\java\\features"},
 		glue = {"stepDefinitions","hooks"},
-		tags = "@FlightSearch",
+		
 		plugin = {
 		        "pretty",
 		        "html:reports/cucumber-reports/cucumber.html",
