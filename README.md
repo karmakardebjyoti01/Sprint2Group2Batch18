@@ -59,9 +59,9 @@ Sprint2Group2Batch18/
 
 4. Run the application:
    ```bash
-   mvn spring-boot:run
+   mvn test
    ```
-   (Note: Adjust the run command based on your specific application setup)
+
 
 ## 👥 Contributors
 
