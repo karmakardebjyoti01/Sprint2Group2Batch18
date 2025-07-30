@@ -1,11 +1,13 @@
 package pages;
  
 import java.time.Duration;
- 
+
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
  
 public class FlightBookingPageFactory extends BaseClass {
@@ -13,10 +15,7 @@ public class FlightBookingPageFactory extends BaseClass {
  
     public FlightBookingPageFactory(WebDriver driver) {
         super(driver);
-//        this.driver = driver;
-//        PageFactory.initElements(driver, this);
     }
-    
     
     @FindBy(xpath = "//input[@id='username']")
 	WebElement loginusernameElement;
@@ -44,7 +43,7 @@ public class FlightBookingPageFactory extends BaseClass {
     @FindBy(id = "departure")
     WebElement departureDateInput;
  
-    @FindBy(id = "selectClassLabel")
+    @FindBy(id = "selectclass")
     WebElement selectClassLabel;
     
     @FindBy(id = "name")
@@ -85,8 +84,8 @@ public class FlightBookingPageFactory extends BaseClass {
     }
     
     public void selectTravelClass(String className) {
-		Select selectClassLabel = new Select(selectClassLabel);
-		selectClassLabel.selectByVisibleText(className);
+		Select selectClassLabelElement = new Select(selectClassLabel);
+		selectClassLabelElement.selectByVisibleText(className);
 	}
     
     public void enterName(String passengerName) {
@@ -100,25 +99,63 @@ public class FlightBookingPageFactory extends BaseClass {
     }
     
     public void enterPhone(String passengerPhone) {
-        phone.clear();
+//    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", phone);
+////    	phoneInput.clear();
+//    	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//    	    wait.until(ExpectedConditions.visibilityOf(phone));
+//        phone.clear();
+//        phone.sendKeys(passengerPhone);
+    	
+    	JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        // Scroll so the phone field touches the bottom edge of the viewport
+        js.executeScript(
+            "var elem = arguments[0];" +
+            "var rect = elem.getBoundingClientRect();" +
+            "var offset = window.innerHeight - rect.bottom;" +
+            "window.scrollBy(0, offset);",
+            phone);
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(phone));
+
+        js.executeScript("arguments[0].value = '';", phone);
         phone.sendKeys(passengerPhone);
     }
  
     public void selectPassengerCount(String count) {
 //        passengerCountDropdown.sendKeys(count);
+//    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", ticketClassCount);
+    	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    	    wait.until(ExpectedConditions.visibilityOf(ticketClassCount));
     	ticketClassCount.clear();
     	ticketClassCount.sendKeys(count);
     }
  
     public void clickSearchButton() {
+//    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", searchButton);
+    	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    	    wait.until(ExpectedConditions.visibilityOf(searchButton));
+    	    System.out.println("Enter the submit button");
         searchButton.click();
     }
  
     public String getBookingConfirmationMessage() {
+    	 JavascriptExecutor js = (JavascriptExecutor) driver;
+    	js.executeScript(
+    	        "var elem = arguments[0];" +
+    	        "var rect = elem.getBoundingClientRect();" +
+    	        "window.scrollBy(0, rect.top);",   // or simply: elem.scrollIntoView(true)
+    	        phone);
+
+    	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    	    wait.until(ExpectedConditions.visibilityOf(confirmMessage));
+    	    System.out.println("Confirm Message: "+confirmMessage.getText().trim());
         return confirmMessage.getText().trim();
     }
 
     public String getNameErrorMessage() {
+    	System.out.println("Error Message: "+errorMessage.getText().trim());
         return errorMessage.getText().trim();
     }
     
@@ -126,6 +163,7 @@ public class FlightBookingPageFactory extends BaseClass {
     
     
     public  void login() {
+    	System.out.print("Entering the login func");
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 	    wait.until(ExpectedConditions.visibilityOf(loginusernameElement));
