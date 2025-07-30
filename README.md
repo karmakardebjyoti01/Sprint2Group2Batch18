@@ -68,6 +68,7 @@ Sprint2Group2Batch18/
 - **Rajdeep Ghosh** ([@rajdeep0309](https://github.com/rajdeep0309)) - Project Lead
 - **Debjyoti Karma** ([@karmakardebjyoti01](https://github.com/karmakardebjyoti01)) - Developer
 - **Farhan Ahmad** ([@farhan-ahmad-tufail](https://github.com/farhan-ahmad-tufail)) - Developer
+- **Mohammad Adnan**  - Developer
 
 ## 📝 Recent Updates
 
