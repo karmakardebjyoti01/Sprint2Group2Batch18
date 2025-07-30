@@ -86,8 +86,7 @@ public class FlightEnquiryPageFactory extends BaseClass{
 		driver.switchTo().alert().accept();
 		loginButtonElement.click();
 		driver.switchTo().alert().accept();
-		//change password alert
-//		driver.switchTo().alert().accept();
+		
 		
 	}
 	public  void navigateToEnquiryLink() {
